@@ -8,7 +8,8 @@
   <class name="se.citerus.dddsample.domain.model.cargo.Cargo" table="Cargo">
 
     <id name="id" column="id">
-      <generator class="org.hibernate.id.IdentityGenerator"/>
+      <!--<generator class="org.hibernate.id.IdentityGenerator"/>-->
+      <generator class="native"/>
     </id>
 
     <many-to-one name="origin" column="origin_id" not-null="false" cascade="none" update="false" foreign-key="origin_fk"/>
@@ -32,7 +33,7 @@
 
       <component name="nextExpectedActivity" update="true">
         <many-to-one name="location" column="next_expected_location_id" foreign-key="next_expected_location_fk" cascade="none"/>
-        <property name="type" column="next_expected_handling_event_type">
+        <property name="type" column="nxt_expected_handling_evnt_typ">
           <type name="org.hibernate.type.EnumType">
             <param name="enumClass">se.citerus.dddsample.domain.model.handling.HandlingEvent$Type</param>
             <param name="type">12</param><!-- 12 is java.sql.Types.VARCHAR -->
